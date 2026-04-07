@@ -85,7 +85,7 @@ reunion-ally-mvp/
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-org/reunion-ally-mvp.git
+git clone https://github.com/Reunion-Ally-Organization/reunion-ally-mvp.git
 cd reunion-ally-mvp
 
 # Install dependencies
