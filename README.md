@@ -37,16 +37,16 @@ Reunion Ally is a web application designed to eliminate the stress of reunion pl
 
 ## Tech Stack
 
-| Layer        | Technology                        |
-| ------------ | --------------------------------- |
-| Frontend     | React.js, TypeScript, JavaScript  |
-| Markup       | HTML                              |
-| Styling      | Vanilla CSS                       |
-| Deployment   | AWS Amplify Hosting (CDN)         |
-| Auth         | AWS Cognito (via Amplify)         |
-| Database     | AWS DynamoDB / GraphQL            |
-| Storage      | AWS S3                            |
-| APIs         | AWS Amplify APIs                  |
+| Layer        | Technology                              |
+| ------------ | --------------------------------------- |
+| Frontend     | React.js, TypeScript, JavaScript        |
+| Markup       | HTML                                    |
+| Styling      | Vanilla CSS                             |
+| Deployment   | AWS Amplify Hosting (CDN)               |
+| Auth         | AWS Cognito (via Amplify)               |
+| Database     | AWS DynamoDB                            |
+| Storage      | AWS S3                                  |
+| APIs         | AWS AppSync / GraphQL (via Amplify)     |
 
 > **Note:** Next.js integration is planned for a future iteration.
 
