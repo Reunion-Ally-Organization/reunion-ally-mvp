@@ -1,0 +1,30 @@
+{
+  "name": "reunion-ally-mvp",
+  "version": "1.0.0",
+  "description": "**Reunion Planning Reimagined** — A complete reunion management platform that helps organizers manage events, track attendance, handle payments, and coordinate communications — all in one place.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Reunion-Ally-Organization/reunion-ally-mvp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Reunion-Ally-Organization/reunion-ally-mvp/issues"
+  },
+  "homepage": "https://github.com/Reunion-Ally-Organization/reunion-ally-mvp#readme",
+  "dependencies": {
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "typescript": "^6.0.3"
+  }
+}
