@@ -55,3 +55,61 @@
   color: #444;
   margin: 0.3rem 0;
 }
+
+/* How It Works Section */
+.how-it-works-section {
+  padding: 2rem;
+  background-color: #fff;
+  text-align: center;
+  margin-top: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.how-it-works-title {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.how-it-works-description {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.how-it-works-steps {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.how-it-works-step {
+  background: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1.5rem 1rem;
+  flex: 1 1 220px;
+  max-width: 300px;
+  min-width: 200px;
+  margin: 0 0.5rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+}
+
+.how-it-works-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.how-it-works-step h3 {
+  font-size: 1.2rem;
+  color: #007bff;
+  margin-bottom: 0.5rem;
+}
+
+.how-it-works-step p {
+  font-size: 1rem;
+  color: #555;
+  margin: 0;
+}

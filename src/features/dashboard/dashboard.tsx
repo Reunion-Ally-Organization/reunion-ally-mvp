@@ -34,4 +34,37 @@ const DashboardPreview = () => {
   );
 };
 
-export default DashboardPreview;
+const HowItWorksSection = () => {
+  return (
+    <section className="how-it-works-section">
+      <h2 className="how-it-works-title">How It Works</h2>
+      <p className="how-it-works-description">Get Your Reunion Organized in Three Simple Steps</p>
+      <div className="how-it-works-steps">
+        <div className="how-it-works-step">
+          <div className="how-it-works-icon">🎉</div>
+          <h3>Create Your Event</h3>
+          <p>Set up your reunion details, invite lists, and budget in minutes.</p>
+        </div>
+        <div className="how-it-works-step">
+          <div className="how-it-works-icon">📧</div>
+          <h3>Invite & Coordinate</h3>
+          <p>Share invitations, track RSVPs, and join your team for planning.</p>
+        </div>
+        <div className="how-it-works-step">
+          <div className="how-it-works-icon">✅</div>
+          <h3>Manage & Execute</h3>
+          <p>Collect payments, share details, and offer guests everything in one place.</p>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const DashboardPage = () => (
+  <>
+    <DashboardPreview />
+    <HowItWorksSection />
+  </>
+);
+
+export default DashboardPage;
