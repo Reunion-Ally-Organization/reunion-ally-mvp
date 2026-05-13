@@ -78,21 +78,36 @@ reunion-ally-mvp/
 ### Prerequisites
 
 - [Node.js](https://nodejs.org/) (v18+)
-- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
-- [AWS Amplify CLI](https://docs.amplify.aws/cli/) (for backend services)
+- [npm](https://www.npmjs.com/)
+- Optional: [AWS Amplify CLI](https://docs.amplify.aws/cli/) for backend services
 
-### Installation
+### Run Locally
+
+From this project folder:
 
 ```bash
-# Clone the repository
-git clone https://github.com/Reunion-Ally-Organization/reunion-ally-mvp.git
-cd reunion-ally-mvp
-
-# Install dependencies
 npm install
+npm run local
+```
 
-# Start the development server
+Then open:
+
+```text
+http://127.0.0.1:5173/
+```
+
+The local script uses a fixed host and port so everyone can use the same URL. If port 5173 is already busy, stop the other process or run Vite without the fixed port:
+
+```bash
 npm run dev
+```
+
+### Other Commands
+
+```bash
+npm run build    # Type-check and create a production build in dist/
+npm run preview  # Serve the production build locally
+npm run lint     # Run ESLint
 ```
 
 ---
