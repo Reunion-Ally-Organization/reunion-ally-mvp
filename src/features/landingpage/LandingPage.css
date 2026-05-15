@@ -1,0 +1,27 @@
+#navigation-bar {
+    display: flex;
+    background: white;
+    padding: 5px;
+}
+
+#navigation-bar a {
+    text-decoration: none;
+    color: gray;
+}
+
+.navigation-buttons {
+    padding: 5px;
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+}
+
+#signUp-button {
+    background-color: white;
+    color: black;
+}
+
+#login-button {
+    background: purple;
+    color: white;
+}
