@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "local": "lsof -ti tcp:5173 | xargs kill -9 2>/dev/null; vite --host 127.0.0.1 --port 5173 --strictPort --open /"
+    "local": "vite --host 127.0.0.1 --port 5173 --open /"
   },
   "dependencies": {
     "react": "^19.2.5",

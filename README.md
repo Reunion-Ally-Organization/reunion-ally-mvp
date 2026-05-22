@@ -96,11 +96,7 @@ Then open:
 http://127.0.0.1:5173/
 ```
 
-The local script uses a fixed host and port so everyone can use the same URL. If port 5173 is already busy, stop the other process or run Vite without the fixed port:
-
-```bash
-npm run dev
-```
+The local script uses Vite directly, so it works in Windows PowerShell, macOS Terminal, and Linux shells. It starts on port 5173 when available and opens the browser automatically. If that port is busy, Vite will choose the next available port and print the URL in the terminal.
 
 ### Other Commands
 
