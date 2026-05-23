@@ -104,7 +104,25 @@ The local script uses Vite directly, so it works in Windows PowerShell, macOS Te
 npm run build    # Type-check and create a production build in dist/
 npm run preview  # Serve the production build locally
 npm run lint     # Run ESLint
+npm run deploy   # Build and publish dist/ to GitHub Pages
 ```
+
+### Deploy to GitHub Pages
+
+This Vite app is configured for the GitHub Pages URL:
+
+```text
+https://reunion-ally-organization.github.io/reunion-ally-mvp/
+```
+
+To deploy from your computer:
+
+```bash
+npm install
+npm run deploy
+```
+
+The deploy command builds the app and publishes the `dist/` folder to the `gh-pages` branch. In GitHub, go to **Settings > Pages** and set the source to deploy from the `gh-pages` branch.
 
 ---
 
