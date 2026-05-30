@@ -11,7 +11,9 @@ export function Hero({ onAuthOpen }: HeroProps) {
       <img className="hero-section__image" src={heroImage} alt="" />
       <div className="hero-section__content">
         <div className="hero-section__copy">
-          <h1 id="hero-title">Reunion Planning Reimagined</h1>
+          <h1 id="hero-title">
+            Reunion<br className="hero-break" /> Planning<br className="hero-break" /> Reimagined
+          </h1>
           <p>Say goodbye to scattered planning and hello to stress-free reunions!</p>
           <button className="button button--primary button--large" onClick={() => onAuthOpen('signup')}>
             Start Planning

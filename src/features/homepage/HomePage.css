@@ -174,6 +174,10 @@ h1, h2, h3, h4, h5, h6, h7, h8 {
   max-width: 360px;
 }
 
+.hero-break {
+  display: none;
+}
+
 .hero-section p {
   width: 100%;
   margin: 0;
@@ -642,12 +646,17 @@ h1, h2, h3, h4, h5, h6, h7, h8 {
 
 @media (max-width: 900px) {
   .home-nav {
-    gap: 16px;
-    padding-inline: 24px;
+    gap: 12px;
+    padding-inline: 20px;
+    min-height: 64px;
   }
 
   .home-nav__links {
-    gap: 16px;
+    display: none;
+  }
+
+  .hero-break {
+    display: block;
   }
 
   .hero-section {
@@ -713,19 +722,22 @@ h1, h2, h3, h4, h5, h6, h7, h8 {
 }
 
 @media (max-width: 560px) {
-  .home-nav__actions,
-  .home-nav__links,
-  .cta-card__actions {
-    width: 100%;
+  .home-nav__actions {
+    gap: 10px;
+    flex-shrink: 0;
   }
 
-  .home-nav__actions,
+  .home-nav__actions .button--small {
+    padding: 7px 14px;
+    font-size: 13px;
+  }
+
   .cta-card__actions {
+    width: 100%;
     flex-direction: column;
   }
 
-  .button,
-  .home-nav__actions .button {
+  .button.cta-card__actions .button {
     width: 100%;
   }
 
