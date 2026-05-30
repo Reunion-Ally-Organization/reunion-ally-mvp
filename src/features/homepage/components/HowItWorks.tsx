@@ -1,26 +1,30 @@
-import { Icon, type IconName } from './Icon'
+import {
+  BudgetCircleIcon,
+  LocationCircleIcon,
+  MultiAttendanceCircleIcon,
+} from './CustomIcons'
 
 interface Step {
-  icon: IconName
+  icon: React.ReactNode
   title: string
   description: string
 }
 
 const steps: Step[] = [
   {
-    icon: 'location',
+    icon: <LocationCircleIcon size={60} />,
     title: 'Create your event',
     description: 'Set up your reunion details, invite list, and budget in minutes.',
   },
   {
-    icon: 'plusUser',
-    title: 'invite & Coordinate',
+    icon: <MultiAttendanceCircleIcon size={60} />,
+    title: 'Invite & Coordinate',
     description: 'Send invitations, poll for dates, and communicate with all attendees.',
   },
   {
-    icon: 'settings',
+    icon: <BudgetCircleIcon size={60} />,
     title: 'Manage & Execute',
-    description: 'Collect payment, track RSVPs, and ensure everything runs smoothly',
+    description: 'Collect payment, track RSVPs, and ensure everything runs smoothly.',
   },
 ]
 
@@ -31,12 +35,10 @@ export function HowItWorks() {
         <h2 id="how-title">How it works</h2>
         <p>Get your reunion organized in three simple steps</p>
       </div>
-      <div className="feature-grid">
+      <div className="how-steps">
         {steps.map((step) => (
-          <article className="feature-card" key={step.title}>
-            <span className="icon-badge">
-              <Icon name={step.icon} />
-            </span>
+          <article className="how-step" key={step.title}>
+            {step.icon}
             <h3>{step.title}</h3>
             <p>{step.description}</p>
           </article>

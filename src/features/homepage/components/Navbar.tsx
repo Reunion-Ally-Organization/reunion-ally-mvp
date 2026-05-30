@@ -1,8 +1,13 @@
 import logo from '../../../assets/home/reunion-ally-logo.png'
+import type { AuthView } from './AuthModal'
 
 const navItems = ['Dashboard', 'Manage Event', 'Help'] as const
 
-export function Navbar() {
+interface NavbarProps {
+  onAuthOpen: (view: AuthView) => void
+}
+
+export function Navbar({ onAuthOpen }: NavbarProps) {
   return (
     <header className="home-nav">
       <a className="home-nav__brand" href="/" aria-label="Reunion Ally home">
@@ -16,12 +21,12 @@ export function Navbar() {
         ))}
       </nav>
       <div className="home-nav__actions">
-        <a className="button button--outline button--small" href="/">
-          SignUp
-        </a>
-        <a className="button button--primary button--small" href="/">
-          LogIn
-        </a>
+        <button className="button button--outline button--small" onClick={() => onAuthOpen('signup')}>
+          Sign Up
+        </button>
+        <button className="button button--primary button--small" onClick={() => onAuthOpen('login')}>
+          Log In
+        </button>
       </div>
     </header>
   )

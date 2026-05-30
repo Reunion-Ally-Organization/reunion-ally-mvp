@@ -1,4 +1,6 @@
+import { useState } from 'react'
 import './HomePage.css'
+import { AuthModal, type AuthView } from './components/AuthModal'
 import { CallToAction } from './components/CallToAction'
 import { DashboardPreview } from './components/DashboardPreview'
 import { FeatureSection } from './components/FeatureSection'
@@ -8,17 +10,28 @@ import { HowItWorks } from './components/HowItWorks'
 import { Navbar } from './components/Navbar'
 
 export default function HomePage() {
+  const [authView, setAuthView] = useState<AuthView | null>(null)
+
+  function openAuth(view: AuthView) {
+    setAuthView(view)
+  }
+
+  function closeAuth() {
+    setAuthView(null)
+  }
+
   return (
     <div className="home-page">
-      <Navbar />
+      <Navbar onAuthOpen={openAuth} />
       <main>
-        <Hero />
+        <Hero onAuthOpen={openAuth} />
         <FeatureSection />
         <DashboardPreview />
         <HowItWorks />
-        <CallToAction />
+        <CallToAction onAuthOpen={openAuth} />
       </main>
       <Footer />
+      {authView && <AuthModal initialView={authView} onClose={closeAuth} />}
     </div>
   )
 }

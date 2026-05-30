@@ -1,6 +1,8 @@
 export type IconName =
   | 'calendar'
+  | 'clock'
   | 'payment'
+  | 'wallet'
   | 'message'
   | 'location'
   | 'budget'
@@ -37,11 +39,25 @@ export function Icon({ name, className = '', decorative = true }: IconProps) {
           <path d="M8 14h3M13 14h3M8 18h3" />
         </svg>
       )
+    case 'clock':
+      return (
+        <svg {...common}>
+          <circle cx="12" cy="12" r="9" />
+          <path d="M12 7v5l3 3" />
+        </svg>
+      )
     case 'payment':
       return (
         <svg {...common}>
           <rect x="2.5" y="5" width="19" height="14" rx="3" />
           <path d="M2.5 9h19M8 14h2M13 14h3" />
+        </svg>
+      )
+    case 'wallet':
+      return (
+        <svg {...common}>
+          <path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5" />
+          <path d="M16 12h5v4h-5a2 2 0 0 1 0-4Z" />
         </svg>
       )
     case 'message':

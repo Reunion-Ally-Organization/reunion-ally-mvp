@@ -1,29 +1,33 @@
-import { Icon, type IconName } from './Icon'
+import {
+  CommunicationCircleIcon,
+  PaymentCircleIcon,
+  SchedulingCircleIcon,
+} from './CustomIcons'
 
 interface FeatureCard {
-  icon: IconName
+  icon: React.ReactNode
   title: string
   description: string
 }
 
 const features: FeatureCard[] = [
   {
-    icon: 'calendar',
+    icon: <SchedulingCircleIcon size={72} />,
     title: 'Smart Scheduling',
     description:
       'Find the perfect date with polls, calendar integration, and automated reminders for everyone',
   },
   {
-    icon: 'payment',
+    icon: <PaymentCircleIcon size={72} />,
     title: 'Payment Management',
     description:
       'Collect dues, split costs, and handle refunds seamlessly with integrated payment processing.',
   },
   {
-    icon: 'message',
+    icon: <CommunicationCircleIcon size={72} />,
     title: 'Unified Communication',
     description:
-      'Find the perfect date with polls, calendar integration, and automated reminders for everyone.',
+      'Join in on collective conversations in one platform, archived over years of past reunions.',
   },
 ]
 
@@ -37,9 +41,7 @@ export function FeatureSection() {
       <div className="feature-grid">
         {features.map((feature) => (
           <article className="feature-card" key={feature.title}>
-            <span className="icon-badge">
-              <Icon name={feature.icon} />
-            </span>
+            <span className="custom-icon-wrap">{feature.icon}</span>
             <h3>{feature.title}</h3>
             <p>{feature.description}</p>
           </article>

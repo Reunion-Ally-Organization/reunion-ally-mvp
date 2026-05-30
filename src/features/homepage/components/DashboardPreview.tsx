@@ -1,4 +1,4 @@
-import { Icon } from './Icon'
+import { BudgetSmallIcon, LocationSmallIcon, MultiAttendanceSmallIcon } from './CustomIcons'
 
 interface DetailRow {
   label: string
@@ -34,10 +34,10 @@ export function DashboardPreview() {
       </div>
 
       <div className="dashboard-preview">
-        <h3>Class of 2002 Renion</h3>
+        <h3>Class of 2002 Reunion</h3>
         <div className="dashboard-card">
           <div className="dashboard-card__column">
-            <DashboardPanel title="Event Details" icon="location">
+            <DashboardPanel title="Event Details" icon={<LocationSmallIcon />}>
               <dl className="detail-list">
                 {eventDetails.map((detail) => (
                   <div className="detail-list__row" key={detail.label}>
@@ -48,7 +48,7 @@ export function DashboardPreview() {
               </dl>
             </DashboardPanel>
 
-            <DashboardPanel title="Budget Overview" icon="budget">
+            <DashboardPanel title="Budget Overview" icon={<BudgetSmallIcon />}>
               <div className="budget-list">
                 <div>
                   <strong>Collected</strong>
@@ -62,11 +62,13 @@ export function DashboardPreview() {
             </DashboardPanel>
           </div>
 
-          <DashboardPanel title="Attendence (102/300)" icon="people" className="attendance-panel">
+          <DashboardPanel title="Attendance (102/300)" icon={<MultiAttendanceSmallIcon />} className="attendance-panel">
             <ul className="attendee-list">
               {attendees.map((attendee, index) => (
                 <li key={`${attendee.name}-${attendee.status}-${index}`}>
-                  <Icon name="people" />
+                  <span className="attendee-avatar" aria-hidden>
+                    {attendee.name.charAt(0)}
+                  </span>
                   <span>
                     <strong>{attendee.name}</strong>
                     <small>{attendee.status}</small>
@@ -83,7 +85,7 @@ export function DashboardPreview() {
 
 interface DashboardPanelProps {
   title: string
-  icon: 'location' | 'budget' | 'people'
+  icon: React.ReactNode
   className?: string
   children: React.ReactNode
 }
@@ -93,7 +95,7 @@ function DashboardPanel({ title, icon, className = '', children }: DashboardPane
     <section className={`dashboard-panel ${className}`.trim()}>
       <header className="dashboard-panel__header">
         <span>
-          <Icon name={icon} />
+          {icon}
           <strong>{title}</strong>
         </span>
         <a href="/">View More</a>

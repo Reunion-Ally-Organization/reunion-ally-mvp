@@ -1,6 +1,11 @@
+import type { AuthView } from './AuthModal'
 import { Icon } from './Icon'
 
-export function CallToAction() {
+interface CallToActionProps {
+  onAuthOpen: (view: AuthView) => void
+}
+
+export function CallToAction({ onAuthOpen }: CallToActionProps) {
   return (
     <section className="cta-section" aria-labelledby="cta-title">
       <div className="cta-card">
@@ -9,14 +14,14 @@ export function CallToAction() {
           <p>Join thousands of organizers who trust Reunion Ally for their events</p>
         </div>
         <div className="cta-card__actions">
-          <a className="button button--primary" href="/">
-            Get free quotes
+          <button className="button button--primary" onClick={() => onAuthOpen('signup')}>
+            Create your account
             <Icon name="arrow" />
-          </a>
-          <a className="button button--neutral" href="/">
-            Free SignUp
+          </button>
+          <button className="button button--outline" onClick={() => onAuthOpen('signup')}>
+            Join our newsletter
             <Icon name="arrow" />
-          </a>
+          </button>
         </div>
       </div>
     </section>

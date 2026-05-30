@@ -6,7 +6,7 @@ export function Footer() {
   return (
     <footer className="home-footer">
       <div className="home-footer__inner">
-        <img src={logo} alt="Reunion Ally" />
+        <img src={logo} alt="Reunion Ally" className="home-footer__logo" />
         <nav aria-label="Footer navigation">
           {links.map((link) => (
             <a href="/" key={link}>
