@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
+import { signIn, signUp, resetPassword } from '../../../lib/auth'
 
 export type AuthView = 'login' | 'signup'
+type ModalView = AuthView | 'forgot-password'
 
 interface AuthModalProps {
   initialView: AuthView
@@ -8,12 +10,15 @@ interface AuthModalProps {
 }
 
 export function AuthModal({ initialView, onClose }: AuthModalProps) {
-  const [view, setView] = useState<AuthView>(initialView)
+  const [view, setView] = useState<ModalView>(initialView)
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [agreed, setAgreed] = useState(false)
   const [errors, setErrors] = useState<Record<string, string>>({})
+  const [serverError, setServerError] = useState('')
+  const [successMessage, setSuccessMessage] = useState('')
+  const [loading, setLoading] = useState(false)
   const backdropRef = useRef<HTMLDivElement>(null)
   const firstRef = useRef<HTMLInputElement>(null)
 
@@ -29,9 +34,11 @@ export function AuthModal({ initialView, onClose }: AuthModalProps) {
     return () => document.removeEventListener('keydown', onKey)
   }, [onClose])
 
-  function switchTo(next: AuthView) {
+  function switchTo(next: ModalView) {
     setView(next)
     setErrors({})
+    setServerError('')
+    setSuccessMessage('')
     setName('')
     setEmail('')
     setPassword('')
@@ -43,23 +50,46 @@ export function AuthModal({ initialView, onClose }: AuthModalProps) {
     if (view === 'signup' && !name.trim()) e.name = 'Full name is required'
     if (!email.trim()) e.email = 'Email is required'
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) e.email = 'Enter a valid email'
-    if (!password) e.password = 'Password is required'
-    else if (view === 'signup' && password.length < 8) e.password = 'At least 8 characters'
+    if (view !== 'forgot-password') {
+      if (!password) e.password = 'Password is required'
+      else if (view === 'signup' && password.length < 8) e.password = 'At least 8 characters'
+    }
     if (view === 'signup' && !agreed) e.agreed = 'You must agree to the terms'
     setErrors(e)
     return Object.keys(e).length === 0
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     if (!validate()) return
-    alert(view === 'login' ? 'Logged in!' : 'Account created!')
-    onClose()
+    setLoading(true)
+    setServerError('')
+    setSuccessMessage('')
+    try {
+      if (view === 'forgot-password') {
+        await resetPassword(email)
+        setSuccessMessage('Check your email for a password reset link.')
+      } else if (view === 'signup') {
+        await signUp(email, password, name)
+        setSuccessMessage('Account created! Check your email to confirm your address.')
+      } else {
+        await signIn(email, password)
+        onClose()
+      }
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : 'Something went wrong. Please try again.'
+      setServerError(message)
+    } finally {
+      setLoading(false)
+    }
   }
 
   function handleBackdrop(e: React.MouseEvent) {
     if (e.target === backdropRef.current) onClose()
   }
+
+  const title = view === 'login' ? 'Welcome Back!' : view === 'signup' ? 'Welcome!' : 'Reset Password'
+  const submitLabel = view === 'login' ? 'Log In' : view === 'signup' ? 'Sign Up' : 'Send Reset Link'
 
   return (
     <div className="auth-backdrop" ref={backdropRef} onClick={handleBackdrop} role="dialog" aria-modal="true" aria-labelledby="auth-title">
@@ -71,22 +101,26 @@ export function AuthModal({ initialView, onClose }: AuthModalProps) {
         </button>
 
         <div className="auth-modal__body">
-          <h2 id="auth-title" className="auth-modal__title">
-            {view === 'login' ? 'Welcome Back!' : 'Welcome!'}
-          </h2>
+          <h2 id="auth-title" className="auth-modal__title">{title}</h2>
 
-          <p className="auth-modal__switch">
-            {view === 'login' ? (
-              <>Don't have an account?{' '}
-                <button className="auth-modal__switch-btn" onClick={() => switchTo('signup')}>Sign Up</button>
-              </>
-            ) : (
-              <>Have an account?{' '}
-                <button className="auth-modal__switch-btn" onClick={() => switchTo('login')}>Log In</button>
-              </>
-            )}
-          </p>
+          {view !== 'forgot-password' && (
+            <p className="auth-modal__switch">
+              {view === 'login' ? (
+                <>Don't have an account?{' '}
+                  <button className="auth-modal__switch-btn" onClick={() => switchTo('signup')}>Sign Up</button>
+                </>
+              ) : (
+                <>Have an account?{' '}
+                  <button className="auth-modal__switch-btn" onClick={() => switchTo('login')}>Log In</button>
+                </>
+              )}
+            </p>
+          )}
 
+          {serverError && <p className="auth-form__server-error" role="alert">{serverError}</p>}
+          {successMessage && <p className="auth-form__success" role="status">{successMessage}</p>}
+
+          {!successMessage && (
           <form className="auth-form" onSubmit={handleSubmit} noValidate>
             {view === 'signup' && (
               <div className="auth-form__field">
@@ -107,7 +141,7 @@ export function AuthModal({ initialView, onClose }: AuthModalProps) {
             <div className="auth-form__field">
               <label htmlFor="auth-email">Email</label>
               <input
-                ref={view === 'login' ? firstRef : undefined}
+                ref={view !== 'signup' ? firstRef : undefined}
                 id="auth-email"
                 type="email"
                 value={email}
@@ -118,6 +152,7 @@ export function AuthModal({ initialView, onClose }: AuthModalProps) {
               {errors.email && <span className="auth-form__error">{errors.email}</span>}
             </div>
 
+            {view !== 'forgot-password' && (
             <div className="auth-form__field">
               <label htmlFor="auth-password">{view === 'signup' ? 'Create Password' : 'Password'}</label>
               <input
@@ -130,6 +165,7 @@ export function AuthModal({ initialView, onClose }: AuthModalProps) {
               />
               {errors.password && <span className="auth-form__error">{errors.password}</span>}
             </div>
+            )}
 
             {view === 'signup' && (
               <div className="auth-form__agree">
@@ -145,30 +181,51 @@ export function AuthModal({ initialView, onClose }: AuthModalProps) {
               </div>
             )}
 
-            <button type="submit" className="auth-form__submit">
-              {view === 'login' ? 'Log In' : 'Sign Up'}
+            <button type="submit" className="auth-form__submit" disabled={loading}>
+              {loading ? 'Please wait…' : submitLabel}
             </button>
 
-            <a href="/" className="auth-form__forgot">Forgot password</a>
+            {view === 'login' && (
+              <button type="button" className="auth-form__forgot" onClick={() => switchTo('forgot-password')}>
+                Forgot password?
+              </button>
+            )}
 
-            <div className="auth-form__divider">
-              <span />
-              <p>Or</p>
-              <span />
-            </div>
+            {view === 'forgot-password' && (
+              <button type="button" className="auth-form__forgot" onClick={() => switchTo('login')}>
+                ← Back to Log In
+              </button>
+            )}
 
-            <div className="auth-form__socials">
-              <button type="button" className="auth-social-btn" aria-label="Continue with Google">
-                <GoogleIcon />
-              </button>
-              <button type="button" className="auth-social-btn" aria-label="Continue with Apple">
-                <AppleIcon />
-              </button>
-              <button type="button" className="auth-social-btn auth-social-btn--facebook" aria-label="Continue with Facebook">
-                <FacebookIcon />
-              </button>
-            </div>
+            {view !== 'forgot-password' && (
+              <>
+                <div className="auth-form__divider">
+                  <span />
+                  <p>Or</p>
+                  <span />
+                </div>
+
+                <div className="auth-form__socials">
+                  <button type="button" className="auth-social-btn" aria-label="Continue with Google">
+                    <GoogleIcon />
+                  </button>
+                  <button type="button" className="auth-social-btn" aria-label="Continue with Apple">
+                    <AppleIcon />
+                  </button>
+                  <button type="button" className="auth-social-btn auth-social-btn--facebook" aria-label="Continue with Facebook">
+                    <FacebookIcon />
+                  </button>
+                </div>
+              </>
+            )}
           </form>
+          )}
+
+          {successMessage && (
+            <button type="button" className="auth-form__forgot" onClick={() => switchTo('login')}>
+              ← Back to Log In
+            </button>
+          )}
         </div>
       </div>
     </div>
