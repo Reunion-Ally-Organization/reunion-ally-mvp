@@ -1,0 +1,144 @@
+/* ── Help Page ───────────────────────────────────────── */
+
+.help-page {
+  background: #ffffff;
+}
+
+.help-body {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 40px 24px 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* ── Page title ──────────────────────────────────────── */
+.help-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--deep-blue, #27325a);
+  text-align: center;
+  margin: 0;
+}
+
+/* ── Intro ───────────────────────────────────────────── */
+.help-intro__heading {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--primary-blue, #4a5fab);
+  margin: 0 0 12px;
+}
+
+.help-intro__text {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-dark, #212121);
+  margin: 0;
+}
+
+/* ── FAQ Section ─────────────────────────────────────── */
+.help-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.help-section__title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--primary-blue, #4a5fab);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.help-section__emoji {
+  font-size: 22px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+/* ── Individual FAQ ──────────────────────────────────── */
+.help-faq {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.help-faq__question {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--deep-blue, #27325a);
+  margin: 0;
+}
+
+.help-faq__answer {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-dark, #212121);
+  margin: 0;
+}
+
+/* ── Still have questions CTA ────────────────────────── */
+.help-cta {
+  background: #eef1ff;
+  border-radius: 16px;
+  padding: 36px 32px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.help-cta__title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--primary-blue, #4a5fab);
+  margin: 0;
+}
+
+.help-cta__text {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-dark, #212121);
+  margin: 0;
+}
+
+.help-cta__contact {
+  font-size: 14px;
+  color: var(--text-dark, #212121);
+  margin: 0;
+}
+
+.help-cta__email {
+  color: var(--primary-blue, #4a5fab);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.help-cta__email:hover {
+  opacity: 0.8;
+}
+
+/* ── Responsive ──────────────────────────────────────── */
+@media (max-width: 560px) {
+  .help-title {
+    font-size: 26px;
+  }
+
+  .help-section__title,
+  .help-intro__heading {
+    font-size: 17px;
+  }
+
+  .help-cta {
+    padding: 28px 20px;
+  }
+}

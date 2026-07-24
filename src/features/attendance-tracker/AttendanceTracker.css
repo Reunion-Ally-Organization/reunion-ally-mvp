@@ -1,0 +1,191 @@
+/* ── Attendance Tracker ──────────────────────────────── */
+
+/* Tabs */
+.att-tabs {
+  display: flex;
+  gap: 8px;
+}
+
+.att-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 16px;
+  border-radius: 8px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  border: 1.5px solid #e8eaf0;
+  background: #ffffff;
+  color: var(--deep-blue, #27325a);
+  cursor: pointer;
+  transition: background 140ms ease, border-color 140ms ease, color 140ms ease;
+}
+
+.att-tab--active {
+  background: #eef1ff;
+  border-color: var(--primary-blue, #4a5fab);
+  color: var(--primary-blue, #4a5fab);
+}
+
+/* Desktop table */
+.att-table-wrap {
+  overflow-x: auto;
+}
+
+.att-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.att-table th {
+  text-align: left;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-dark, #212121);
+  padding: 0 12px 12px 0;
+  border-bottom: 1.5px solid #e8eaf0;
+  white-space: nowrap;
+}
+
+.att-table td {
+  padding: 14px 12px 14px 0;
+  border-bottom: 1px solid #f0f1f5;
+  color: var(--deep-blue, #27325a);
+  vertical-align: middle;
+}
+
+.att-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.att-table__name {
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.att-table__contact {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 12px;
+  color: var(--text-muted, #757575);
+}
+
+.att-table__actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* Action icon buttons */
+.att-icon-btn {
+  background: none;
+  border: none;
+  padding: 5px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: var(--text-muted, #757575);
+  display: flex;
+  align-items: center;
+  transition: background 120ms ease, color 120ms ease;
+}
+
+.att-icon-btn:hover {
+  background: #f0f2fb;
+  color: var(--primary-blue, #4a5fab);
+}
+
+.att-icon-btn--danger:hover {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+/* Status badges */
+.att-badge {
+  display: inline-block;
+  padding: 3px 12px;
+  border-radius: 99px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.att-badge--attending {
+  background: var(--primary-blue, #4a5fab);
+  color: #ffffff;
+}
+
+.att-badge--pending {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.att-badge--declined {
+  background: #f1f1f4;
+  color: #6b7280;
+}
+
+/* Mobile cards */
+.att-mobile-list {
+  display: none;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.att-mobile-card {
+  border: 1px solid #f0f1f5;
+  border-radius: 10px;
+  padding: 14px;
+}
+
+.att-mobile-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.att-mobile-card__name {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--deep-blue, #27325a);
+}
+
+.att-mobile-card__contact {
+  font-size: 12px;
+  color: var(--text-muted, #757575);
+  margin: 0 0 10px;
+}
+
+.att-mobile-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--text-muted, #757575);
+}
+
+/* Empty state */
+.att-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 48px 24px;
+  color: var(--text-muted, #757575);
+  font-size: 14px;
+}
+
+/* Responsive: swap table for cards on mobile */
+@media (max-width: 640px) {
+  .att-table-wrap {
+    display: none;
+  }
+
+  .att-mobile-list {
+    display: flex;
+  }
+}

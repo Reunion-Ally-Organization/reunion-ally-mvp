@@ -9,7 +9,11 @@ import { Hero } from './components/Hero'
 import { HowItWorks } from './components/HowItWorks'
 import { Navbar } from './components/Navbar'
 
-export default function HomePage() {
+interface HomePageProps {
+  onNavigate?: (navItem: string) => void
+}
+
+export default function HomePage({ onNavigate }: HomePageProps) {
   const [authView, setAuthView] = useState<AuthView | null>(null)
 
   function openAuth(view: AuthView) {
@@ -22,7 +26,7 @@ export default function HomePage() {
 
   return (
     <div className="home-page">
-      <Navbar onAuthOpen={openAuth} />
+      <Navbar onAuthOpen={openAuth} onNavigate={onNavigate} />
       <main>
         <Hero onAuthOpen={openAuth} />
         <FeatureSection />

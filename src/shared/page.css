@@ -1,0 +1,187 @@
+/* ── Shared Inner-Page Styles ───────────────────────── */
+
+/* page wrapper */
+.inner-page {
+  --primary-blue: #4a5fab;
+  --deep-blue: #27325a;
+  --text-dark: #212121;
+  --text-muted: #757575;
+  --card-border: #e8eaf0;
+  width: 100%;
+  min-height: 100vh;
+  background: #f4f6fb;
+  color: var(--deep-blue);
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Page header ────────────────────────────────────── */
+.inner-page__header {
+  padding: 36px 24px 0;
+  max-width: 780px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.inner-page__title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--primary-blue);
+  margin: 0 0 4px;
+}
+
+.inner-page__subtitle {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin: 0 0 28px;
+}
+
+/* ── Body / content area ────────────────────────────── */
+.inner-page__body {
+  flex: 1;
+  max-width: 780px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 24px 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ── Card base ──────────────────────────────────────── */
+.page-card {
+  background: #ffffff;
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 22px 24px;
+}
+
+.page-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.page-card__title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--deep-blue);
+  margin: 0;
+}
+
+/* ── Stat grid (2 × 2) ──────────────────────────────── */
+.stat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.stat-card {
+  background: #ffffff;
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.stat-card__info {}
+
+.stat-card__label {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 0 0 4px;
+}
+
+.stat-card__value {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--deep-blue);
+  margin: 0;
+}
+
+.stat-card__icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: #eef1ff;
+  color: var(--primary-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ── Buttons ────────────────────────────────────────── */
+.page-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1.5px solid transparent;
+  transition: opacity 150ms ease, transform 150ms ease;
+  white-space: nowrap;
+}
+
+.page-btn:hover {
+  opacity: 0.87;
+  transform: translateY(-1px);
+}
+
+.page-btn--primary {
+  background: var(--primary-blue);
+  color: #ffffff;
+}
+
+.page-btn--outline {
+  background: #ffffff;
+  border-color: var(--card-border);
+  color: var(--deep-blue);
+}
+
+.page-btn--full {
+  width: 100%;
+  padding: 13px 18px;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+/* ── Divider row ────────────────────────────────────── */
+.page-divider {
+  border: none;
+  border-top: 1px solid #f0f1f5;
+  margin: 0;
+}
+
+/* ── View more link ─────────────────────────────────── */
+.page-view-more {
+  font-size: 13px;
+  color: var(--primary-blue);
+  text-decoration: none;
+  font-weight: 500;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.page-view-more:hover {
+  text-decoration: underline;
+}
+
+/* ── Footer spacer (inner pages use homepage footer) ── */
+.inner-page footer.home-footer {
+  margin-top: auto;
+}

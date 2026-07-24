@@ -1,0 +1,183 @@
+/* ── Budget Tracker ──────────────────────────────────── */
+
+/* Transactions */
+.bt-transactions {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.bt-transaction {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-bottom: 1px solid #f0f1f5;
+}
+
+.bt-transaction:last-child {
+  border-bottom: none;
+}
+
+.bt-transaction__name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--deep-blue, #27325a);
+  margin: 0 0 2px;
+}
+
+.bt-transaction__date {
+  font-size: 12px;
+  color: var(--text-muted, #757575);
+  margin: 0;
+}
+
+.bt-transaction__right {
+  text-align: right;
+}
+
+.bt-transaction__amount {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--deep-blue, #27325a);
+  margin: 0 0 2px;
+}
+
+.bt-transaction__category {
+  font-size: 12px;
+  color: var(--text-muted, #757575);
+  margin: 0;
+}
+
+/* Payment progress */
+.bt-paid-label {
+  font-size: 14px;
+  color: var(--deep-blue, #27325a);
+  margin: 0 0 10px;
+}
+
+.bt-progress {
+  height: 8px;
+  border-radius: 99px;
+  background: #e8eaf0;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.bt-progress__fill {
+  height: 100%;
+  border-radius: 99px;
+  background: var(--primary-blue, #4a5fab);
+  transition: width 500ms ease;
+}
+
+.bt-collected-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--text-muted, #757575);
+}
+
+/* Budget breakdown */
+.bt-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.bt-breakdown__row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 0;
+  border-bottom: 1px solid #f0f1f5;
+}
+
+.bt-breakdown__row:last-child {
+  border-bottom: none;
+}
+
+.bt-breakdown__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.bt-breakdown__label {
+  flex: 1;
+  font-size: 14px;
+  color: var(--deep-blue, #27325a);
+}
+
+.bt-breakdown__amount {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--deep-blue, #27325a);
+}
+
+/* Quick actions */
+.bt-quick-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.bt-quick-actions__row {
+  display: flex;
+  gap: 10px;
+}
+
+.bt-quick-actions__row .page-btn {
+  flex: 1;
+}
+
+/* Deadlines */
+.bt-deadlines {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.bt-deadline {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid #f0f1f5;
+}
+
+.bt-deadline:last-child {
+  border-bottom: none;
+}
+
+.bt-deadline__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--primary-blue, #4a5fab);
+  flex-shrink: 0;
+}
+
+.bt-deadline__info {
+  flex: 1;
+}
+
+.bt-deadline__label {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--deep-blue, #27325a);
+  margin: 0 0 2px;
+}
+
+.bt-deadline__note {
+  font-size: 12px;
+  color: var(--text-muted, #757575);
+  margin: 0;
+}
+
+.bt-deadline__amount {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--deep-blue, #27325a);
+}
